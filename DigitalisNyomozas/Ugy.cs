@@ -63,9 +63,12 @@ namespace DigitalisNyomozas
 				}
 			}
 		}
-	
-	
-	
+
+
+		public override string ToString()
+		{
+			return $"Azonosító: {this.azonosito}, címe: {this.cim}, Leírása: {this.leiras}, Állapota: {this.allapot}";
+		}
 	
 	}
 }

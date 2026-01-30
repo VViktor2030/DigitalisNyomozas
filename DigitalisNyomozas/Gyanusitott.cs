@@ -12,7 +12,7 @@ namespace DigitalisNyomozas
 		private int gyanusitottsag;
 		private string statusz;
 
-		public Gyanusitott(Szemely szemely, int gyanusitottsag, string statusz)
+		public Gyanusitott(Szemely szemely, string statusz)
 		{
 			this.szemely = szemely;
 			this.gyanusitottsag = 0;
