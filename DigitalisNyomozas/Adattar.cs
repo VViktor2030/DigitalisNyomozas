@@ -8,11 +8,11 @@ namespace DigitalisNyomozas
 {
 	internal class Adattar
 	{
-		List<Felhasznalo> felhasznalok;
-		List<Ugy> ugyek;
-		List<Gyanusitott> gyanusitottak;
-		List<Tanu> tanuk;
-		List<Bizonyitek> bizonyitekok;
+		private List<Felhasznalo> felhasznalok;
+		private List<Ugy> ugyek;
+		private List<Gyanusitott> gyanusitottak;
+		private List<Tanu> tanuk;
+		private List<Bizonyitek> bizonyitekok;
 
 		public Adattar()
 		{
@@ -40,10 +40,24 @@ namespace DigitalisNyomozas
 				switch (valasz)
 				{
 					case 1:
+						bool valid = true;
 						Console.WriteLine();
 						Console.Write("Azonosítója?    ");
 						string azonosito = Console.ReadLine();
-						Console.WriteLine();
+						foreach (var i in ugyek)
+						{
+							if (i.Azonosito == azonosito)
+							{
+								Console.WriteLine("Ez az azonosító már létezik......");
+								valid = false;
+								
+							}
+						}
+						if (!valid)
+						{
+							break;
+						}
+							Console.WriteLine();
 						Console.Write("címe?    ");
 						string cim = Console.ReadLine();
 						Console.WriteLine();
@@ -119,9 +133,24 @@ namespace DigitalisNyomozas
 				switch (valasz)
 				{
 					case 1:
+						bool valid = true;
+
 						Console.WriteLine();
 						Console.Write("Azonosítója?    ");
 						string azonosito = Console.ReadLine();
+						foreach (var i in bizonyitekok)
+						{
+							if (i.Azonosito == azonosito)
+							{
+								Console.WriteLine("Ez az azonosító már létezik......");
+								valid = false;
+								break;
+							}
+						}
+						if (!valid)
+						{
+							break;
+						}
 						Console.WriteLine();
 						Console.Write("típusa?    ");
 						string tipus = Console.ReadLine();
@@ -147,25 +176,30 @@ namespace DigitalisNyomozas
 					case 2:
 						Console.WriteLine("Törlendő bizonyíték azonosítója");
 						string torolni = Console.ReadLine();
+						Bizonyitek torlendo = null;
 						foreach (var i in bizonyitekok)
 						{
 							if (i.Azonosito == torolni)
 							{
-								bizonyitekok.Remove(i);
+								torlendo = i;
 								Console.WriteLine("törölve");
 							}
 		
 						}
+						bizonyitekok.Remove(torlendo);
+						torlendo = null;
 						foreach (var j in ugyek)
 						{
 							foreach (var k in j.Bizonyitekok)
 							{
 								if (k.Azonosito == torolni)
 								{
-									j.Bizonyitekok.Remove(k);
+									torlendo = k;
 									Console.WriteLine("törölve x2");
 								}
+								
 							}
+							j.Bizonyitekok.Remove(torlendo);
 						}
 						break;
 					case 3:

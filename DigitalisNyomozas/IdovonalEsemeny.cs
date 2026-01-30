@@ -8,16 +8,16 @@ namespace DigitalisNyomozas
 {
 	internal class IdovonalEsemeny
 	{
-		private DateOnly datum;
+		private DateTime datum;
 		private string leiras;
 
-		public IdovonalEsemeny(DateOnly datum, string leiras)
+		public IdovonalEsemeny(DateTime datum, string leiras)
 		{
 			this.datum = datum;
 			this.leiras = leiras;
 		}
 
-		public DateOnly Datum { get => datum; set => datum = value; }
+		public DateTime Datum { get => datum; set => datum = value; }
 		public string Leiras { get => leiras; set => leiras = value; }
 	}
 }

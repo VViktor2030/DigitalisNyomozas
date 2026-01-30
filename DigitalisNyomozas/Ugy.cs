@@ -13,9 +13,9 @@ namespace DigitalisNyomozas
 		private string cim;
 		private string leiras;
 		private string allapot;
-		List<Gyanusitott> gyanusitottak;
-		List<Tanu> tanuk;
-		List<Bizonyitek> bizonyitekok;
+		private List<Gyanusitott> gyanusitottak;
+		private List<Tanu> tanuk;
+		private List<Bizonyitek> bizonyitekok;
 
 		public Ugy(string azonosito, string cim, string leiras, string allapot)
 		{
@@ -72,7 +72,7 @@ namespace DigitalisNyomozas
 
 		public override string ToString()
 		{
-			return $"Azonosító: {this.azonosito}, címe: {this.cim}, Leírása: {this.leiras}, Állapota: {this.allapot}";
+			return $"Azonosító: {this.azonosito}, címe: {this.cim}, Leírása: {this.leiras}, Állapota: {this.allapot} Bizonyítékok száma: {bizonyitekok.Count()}";
 		}
 	
 	}
