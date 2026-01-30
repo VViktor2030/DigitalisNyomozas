@@ -13,7 +13,8 @@ namespace DigitalisNyomozas
 		private string cim;
 		private string leiras;
 		private string allapot;
-		List<Szemely> szemelyek;
+		List<Gyanusitott> gyanusitottak;
+		List<Tanu> tanuk;
 		List<Bizonyitek> bizonyitekok;
 
 		public Ugy(string azonosito, string cim, string leiras, string allapot)
@@ -22,8 +23,9 @@ namespace DigitalisNyomozas
 			this.cim = cim;
 			this.leiras = leiras;
 			this.allapot = allapot;
-			szemelyek = new List<Szemely>();
-			bizonyitekok = new List<Bizonyitek>();
+			this.gyanusitottak = new List<Gyanusitott>();
+			this.tanuk = new List<Tanu>();
+			this.bizonyitekok = new List<Bizonyitek>();
 		}
 
 
@@ -31,7 +33,8 @@ namespace DigitalisNyomozas
 		public string Cim { get => cim; set => cim = value; }
 		public string Leiras { get => leiras; set => leiras = value; }
 		public string Allapot { get => allapot; set => allapot = value; }
-		internal List<Szemely> Szemelyek { get => szemelyek; set => szemelyek = value; }
+		internal List<Gyanusitott> Gyanusitottak { get => gyanusitottak; set => gyanusitottak = value; }
+		internal List<Tanu> Tanuk { get => tanuk; set => tanuk = value; }
 		internal List<Bizonyitek> Bizonyitekok { get => bizonyitekok; set => bizonyitekok = value; }
 	
 	
