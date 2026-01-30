@@ -105,8 +105,13 @@ namespace DigitalisNyomozas
 			
 			} while (valasz != 5);
 		}
-	
-	
+
+
+
+
+
+
+
 	
 	
 	}
