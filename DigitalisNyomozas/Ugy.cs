@@ -53,13 +53,18 @@ namespace DigitalisNyomozas
 					j.Gyanusitottsag += i.Megbizhatosag * 3;
 					if (j.Gyanusitottsag > 50)
 					{
+						if (j.Gyanusitottsag >= 100)
+						{
+							Console.WriteLine($"100% Biztos hogy {j.Szemely.Nev} a tettes!!!");
+							j.Gyanusitottsag = 100;
+						}
+						else
+						{
 						Console.WriteLine($"Ez a {j.Szemely.Nev} ember elég gyanús!");
+
+						}
 					}
-					if(j.Gyanusitottsag >= 100)
-					{
-						Console.WriteLine($"100% Biztos hogy {j.Szemely.Nev} a tettes!!!");
-						j.Gyanusitottsag = 100;
-					} 
+
 				}
 			}
 		}
