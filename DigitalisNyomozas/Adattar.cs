@@ -107,7 +107,80 @@ namespace DigitalisNyomozas
 		}
 
 
+		public void BizonyitekKezelo()
+		{
+			int valasz;
 
+			do
+			{
+				Console.WriteLine("1.Bizonyíték hozzáadása 2.Bizonyíték törlése 3. Bizonyítékok Listázása  4. Kilépés");
+				valasz = Convert.ToInt32(Console.ReadLine());
+
+				switch (valasz)
+				{
+					case 1:
+						Console.WriteLine();
+						Console.Write("Azonosítója?    ");
+						string azonosito = Console.ReadLine();
+						Console.WriteLine();
+						Console.Write("típusa?    ");
+						string tipus = Console.ReadLine();
+						Console.WriteLine();
+						Console.Write("leírása?    ");
+						string leiras = Console.ReadLine();
+						Console.WriteLine();
+						Console.Write("Megbízhatósága(1-5)?    ");
+						int megbizhatosag = Convert.ToInt32(Console.ReadLine());
+						Console.WriteLine();
+						Console.Write("És melyik ügyhöz adjuk? (azonosítót)        ");
+						string melyik = Console.ReadLine();
+						Bizonyitek bizi = new Bizonyitek(azonosito, tipus, leiras, megbizhatosag);
+						bizonyitekok.Add(bizi);
+						foreach (var i in ugyek)
+						{
+							if (i.Azonosito == melyik)
+							{
+								i.Bizonyitekok.Add(bizi);
+							}
+						}
+						break;
+					case 2:
+						Console.WriteLine("Törlendő bizonyíték azonosítója");
+						string torolni = Console.ReadLine();
+						foreach (var i in bizonyitekok)
+						{
+							if (i.Azonosito == torolni)
+							{
+								bizonyitekok.Remove(i);
+								Console.WriteLine("törölve");
+							}
+		
+						}
+						foreach (var j in ugyek)
+						{
+							foreach (var k in j.Bizonyitekok)
+							{
+								if (k.Azonosito == torolni)
+								{
+									j.Bizonyitekok.Remove(k);
+									Console.WriteLine("törölve x2");
+								}
+							}
+						}
+						break;
+					case 3:
+						foreach (var i in bizonyitekok)
+						{
+							Console.WriteLine(i);
+						}
+						break;
+				}
+			} while (valasz != 4);
+
+
+
+
+		}
 
 
 
