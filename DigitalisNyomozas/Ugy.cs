@@ -44,7 +44,25 @@ namespace DigitalisNyomozas
 			this.allapot = ujAllapot;
 		}
 	
-	
+		public void Donteshozo()
+		{
+			foreach(var i in bizonyitekok)
+			{
+				foreach (var j in gyanusitottak)
+				{
+					j.Gyanusitottsag += i.Megbizhatosag * 3;
+					if (j.Gyanusitottsag > 50)
+					{
+						Console.WriteLine($"Ez a {j.Szemely.Nev} ember elég gyanús!");
+					}
+					if(j.Gyanusitottsag >= 100)
+					{
+						Console.WriteLine($"100% Biztos hogy {j.Szemely.Nev} a tettes!!!");
+						j.Gyanusitottsag = 100;
+					} 
+				}
+			}
+		}
 	
 	
 	

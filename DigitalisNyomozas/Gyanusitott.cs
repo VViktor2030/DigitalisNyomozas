@@ -15,12 +15,15 @@ namespace DigitalisNyomozas
 		public Gyanusitott(Szemely szemely, int gyanusitottsag, string statusz)
 		{
 			this.szemely = szemely;
-			this.gyanusitottsag = gyanusitottsag;
+			this.gyanusitottsag = 0;
 			this.statusz = statusz;
 		}
 
 		public int Gyanusitottsag { get => gyanusitottsag; set => gyanusitottsag = value; }
 		public string Statusz { get => statusz; set => statusz = value; }
 		internal Szemely Szemely { get => szemely; set => szemely = value; }
+
+
+
 	}
 }
