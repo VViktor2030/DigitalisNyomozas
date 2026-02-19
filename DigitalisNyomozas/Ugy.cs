@@ -46,8 +46,13 @@ namespace DigitalisNyomozas
 	
 		public void Donteshozo()
 		{
+			foreach (var i in gyanusitottak)
+			{
+				i.Gyanusitottsag = 0;
+			}
 			foreach(var i in bizonyitekok)
 			{
+                Console.WriteLine(i);
 				foreach (var j in gyanusitottak)
 				{
 					j.Gyanusitottsag += i.Megbizhatosag * 3;

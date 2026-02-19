@@ -34,7 +34,8 @@ namespace DigitalisNyomozas
 			int valasz;
 			do
 			{
-				Console.WriteLine("1.Ügy létrehozas  2. Ügyek Listázása  3. Új gyanusitott hozzáadása  4. Új tanu hozzáadása   5. kilépes");
+				Console.Clear();
+				Console.WriteLine("1.Ügy létrehozas  2. Ügyek Listázása  3. Új gyanusitott hozzáadása  4. Új tanu hozzáadása  5.Gyanusítottság kiszámolása 6. kilépes");
 				valasz = Convert.ToInt32(Console.ReadLine());
 
 				switch (valasz)
@@ -71,15 +72,21 @@ namespace DigitalisNyomozas
 						break;
 
 					case 2:
+						Console.Clear();
 						foreach (var i in ugyek)
 						{
 							Console.WriteLine(i);
 							Console.WriteLine();
 						}
-						break;
+                        Console.WriteLine();
+                        Console.WriteLine("Nyomd meg az entert a folytatáshoz");
+                        Console.ReadLine();
+                        break;
 
 					case 3:
-						Console.WriteLine();
+                        Console.WriteLine("Melyik ügynek? (azonosítót)");
+                        string melyikGY = Console.ReadLine();
+                        Console.WriteLine();
 						Console.Write("neve?    ");
 						string nevGY = Console.ReadLine();
 						Console.WriteLine();
@@ -92,7 +99,15 @@ namespace DigitalisNyomozas
 						Console.Write("státusza?    ");
 						string statusz = Console.ReadLine();
 						Console.WriteLine();
-						gyanusitottak.Add(new Gyanusitott(new Szemely(nevGY,eletkorGY,megjegyzesGY),statusz));
+						Gyanusitott gy = new Gyanusitott(new Szemely(nevGY, eletkorGY, megjegyzesGY), statusz);
+                        gyanusitottak.Add(gy);
+						foreach(var i in ugyek)
+						{
+							if(i.Azonosito == melyikGY)
+							{
+								i.Gyanusitottak.Add(gy);
+							}
+						}
 						break;
 					case 4:
 						Console.WriteLine();
@@ -112,12 +127,23 @@ namespace DigitalisNyomozas
 						Console.WriteLine();
 						tanuk.Add(new Tanu(new Szemely(nevT, eletkorT, megjegyzesT), szoveg,datum));
 						break;
+					case 5:
+                        Console.WriteLine("Melyik ügynek? (azonosítót)");
+						string melyik = Console.ReadLine();
+						foreach (var i in ugyek)
+						{
+							if (i.Azonosito == melyik)
+							{
+								i.Donteshozo();
+							}
+						}
+						break;
 				}
+						
 			
 			
 			
-			
-			} while (valasz != 5);
+			} while (valasz != 6);
 		}
 
 
@@ -127,6 +153,7 @@ namespace DigitalisNyomozas
 
 			do
 			{
+				Console.Clear();
 				Console.WriteLine("1.Bizonyíték hozzáadása 2.Bizonyíték törlése 3. Bizonyítékok Listázása  4. Kilépés");
 				valasz = Convert.ToInt32(Console.ReadLine());
 
@@ -203,10 +230,14 @@ namespace DigitalisNyomozas
 						}
 						break;
 					case 3:
+						Console.Clear();
 						foreach (var i in bizonyitekok)
 						{
 							Console.WriteLine(i);
 						}
+                        Console.WriteLine();
+                        Console.WriteLine("Nyomd meg az entert a folytatáshoz");
+						Console.ReadLine();
 						break;
 				}
 			} while (valasz != 4);
