@@ -8,7 +8,7 @@
             string valasz;
             do
             {
-                Console.WriteLine("Ügykezelő: 1 \t  Bizonyítékkezelő: 2 Kilépés: k");
+                Console.WriteLine("Ügykezelő: 1 \t Bizonyítékkezelő: 2 \t Esemény kezelő: 3 \t Kilépés: k");
                 valasz = Console.ReadLine();
                 switch(valasz)
                 {
@@ -17,6 +17,9 @@
                         break;
                     case "2":
                         a.BizonyitekKezelo();
+                        break;
+                    case "3":
+                        a.IdovonalKezelo();
                         break;
                 }
                 

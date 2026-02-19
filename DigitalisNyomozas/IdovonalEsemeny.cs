@@ -19,5 +19,11 @@ namespace DigitalisNyomozas
 
 		public DateTime Datum { get => datum; set => datum = value; }
 		public string Leiras { get => leiras; set => leiras = value; }
+
+
+		public override string ToString() 
+		{
+			return $"{this.datum.ToShortDateString()}: {this.leiras}";
+		}
 	}
 }

@@ -13,6 +13,7 @@ namespace DigitalisNyomozas
 		private List<Gyanusitott> gyanusitottak;
 		private List<Tanu> tanuk;
 		private List<Bizonyitek> bizonyitekok;
+		private List<IdovonalEsemeny> esemenyek;
 
 		public Adattar()
 		{
@@ -21,6 +22,7 @@ namespace DigitalisNyomozas
 			this.gyanusitottak = new List<Gyanusitott>();
 			this.tanuk = new List<Tanu>();
 			this.bizonyitekok = new List<Bizonyitek>();
+			this.esemenyek = new List<IdovonalEsemeny>();
 		}
 
 		internal List<Felhasznalo> Felhasznalok { get => felhasznalok; set => felhasznalok = value; }
@@ -28,8 +30,9 @@ namespace DigitalisNyomozas
 		internal List<Gyanusitott> Gyanusitottak { get => gyanusitottak; set => gyanusitottak = value; }
 		internal List<Tanu> Tanuk { get => tanuk; set => tanuk = value; }
 		internal List<Bizonyitek> Bizonyitekok { get => bizonyitekok; set => bizonyitekok = value; }
-	
-		public void Ugykezelo()
+        internal List<IdovonalEsemeny> Esemenyek { get => esemenyek; set => esemenyek = value; }
+
+        public void Ugykezelo()
 		{
 			int valasz;
 			do
@@ -241,12 +244,42 @@ namespace DigitalisNyomozas
 						break;
 				}
 			} while (valasz != 4);
-
-
-
-
 		}
+		public void IdovonalKezelo()
+		{
 
+			string valasz;
+			do
+			{
+				Console.WriteLine("1. Események kiírása  2.Esemény hozzáadása  3. Kilépés");
+				valasz = Console.ReadLine();
+				if (esemenyek.Count > 0)
+				{
+				esemenyek = esemenyek.OrderBy(i => i.Datum).ToList();
+
+				}
+				switch (valasz)
+				{
+					case "1":
+						foreach (var i in esemenyek)
+						{
+							Console.WriteLine(i); 
+						}
+						break;
+					case "2":
+                        Console.Write("Dátum?      ");
+						DateTime datum = Convert.ToDateTime(Console.ReadLine());
+						Console.Write("leírása: ");
+						string leiras = Console.ReadLine();
+						esemenyek.Add(new IdovonalEsemeny(datum, leiras));
+						break;
+				}
+
+
+			} while (valasz != "3");
+		
+		
+		}
 
 
 
